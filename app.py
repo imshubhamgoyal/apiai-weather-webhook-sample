@@ -37,11 +37,23 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") != "getmarks":
-        return {}
+        return {
+                "speech": "no good"
+                "displayText": "no good",
+                # "data": data,
+                # "contextOut": [],
+                "source": "apiai-weather-webhook-sample"
+                }
     baseurl = "http://parkingapp.online/simple_query.php"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
-        return {}
+        return {
+            "speech": "no good"
+            "displayText": "no good",
+            # "data": data,
+            # "contextOut": [],
+            "source": "apiai-weather-webhook-sample"
+                }
     yql_url = baseurl + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
@@ -54,20 +66,35 @@ def makeYqlQuery(req):
     parameters = result.get("parameters")
     student = parameters.get("student")
     if city is None:
-        return None
-
+        return {
+            "speech": "no good"
+            "displayText": "no good",
+            # "data": data,
+            # "contextOut": [],
+            "source": "apiai-weather-webhook-sample"
+               }
     return "select * from scores where text='" + student + "')"
 
 
 def makeWebhookResult(data):
     query = data.get('1')
     if query is None:
-        return {}
-
+        return {
+            "speech": "no good"
+            "displayText": "no good",
+            # "data": data,
+            # "contextOut": [],
+            "source": "apiai-weather-webhook-sample"
+            }
     algoresult = query.get('Algorithm')
     if result is None:
-        return {}
-
+        return {
+            "speech": "no good"
+            "displayText": "no good",
+            # "data": data,
+            # "contextOut": [],
+            "source": "apiai-weather-webhook-sample"
+                }
     
     speech = "Marks in algorithm is " + algoresult
         
