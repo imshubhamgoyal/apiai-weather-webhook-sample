@@ -36,7 +36,7 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "yahooWeatherForecast":
+    if req.get("result").get("action") != "getmarks":
         return {}
     baseurl = "http://parkingapp.online/simple_query.php"
     yql_query = makeYqlQuery(req)
@@ -52,7 +52,7 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
-    city = parameters.get("student")
+    student = parameters.get("student")
     if city is None:
         return None
 
