@@ -38,7 +38,7 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "getmarks":
         return {
-                "speech": "no good"
+                "speech": "no good",
                 "displayText": "no good",
                 # "data": data,
                 # "contextOut": [],
